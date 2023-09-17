@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Laravel
 
 1. Развернуть проект, запустить composer
 2. Создать БД (mysql)
@@ -16,6 +16,6 @@
 5. Сгенерировать токены безопасности - php artisan passport:install
 6. Запустить приложение - php artisan serve
 
-Запросы на _регистрацию_\_авторизацию_\_получение пользователя_ находятся здесь - [user.http](dev%2Fjb_http_client%2Fuser.http)
+Запросы на _регистрацию_ | _авторизацию_ | _получение пользователя_ находятся здесь - [user.http](dev%2Fjb_http_client%2Fuser.http)
 Токен безопасности, сгенерированный ранее (Laravel Password Grant Client) используется в "client_secret" для авторизации
 Для получения пользователя необходимо передать Bearer токен, получаемый при авторизации
