@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends AppBaseController
@@ -30,7 +30,7 @@ class RegisterController extends AppBaseController
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
 
-        $success['token'] = $user->createToken('MyApp')->accessToken;
+        $success['token'] = $user->createToken(config('app.name'))->accessToken;
         $success['email'] = $user->email;
 
         return $this->sendResponse($success, 'User register successfully.');

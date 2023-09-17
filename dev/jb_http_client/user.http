@@ -1,5 +1,5 @@
 ### регистрация
-POST http://127.0.0.1:8001/api/register
+POST http://127.0.0.1:8000/api/register
 Accept: application/json
 Content-Type: application/json
 
@@ -16,7 +16,20 @@ Content-Type: application/json
     "city": "city"
 }
 
-### получить пользователя
-GET http://127.0.0.1:8001/api/user/1
+### авторизация
+POST http://127.0.0.1:8001/oauth/token
 Accept: application/json
 Content-Type: application/json
+
+{
+    "username": "email@email.ru",
+    "password": "password",
+    "grant_type": "password",
+    "client_id": 2,
+    "client_secret": "8RtUrfMKGWtP1GhROMfOb5l5fbLKDgiWHhogg1Xo"
+}
+
+### получить пользователя
+GET http://127.0.0.1:8001/api/user/5
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiOGU4NmNiNjAyMjlhMjNhMTYwNGFjYzBlMWIxMzIyNDkyMWVlOTc4NWFkN2E1YWI0YmU3MDhiMTVkYTc3ZDZmMTcwMjFjYTc4MzkxODczYWIiLCJpYXQiOjE2OTQ5NjMyMjkuNzM5NTM4LCJuYmYiOjE2OTQ5NjMyMjkuNzM5NTUyLCJleHAiOjE3MjY1ODU2MjkuNzI2NDQsInN1YiI6IjUiLCJzY29wZXMiOltdfQ.siP10SZbpGlOYc7_9COTpilQ52qSFtRy0mFmb6V_h1EkxK5zNdOv3XnVuLxYpfhOzRj2u516Gj1Jdo8805s2fh-rh_mOe5CixDmbMTxs1U2GCrk8O5JYobwuwgPYvTyN4mw0lrbLukMrd1WBvpC7J7_ed1kHbfqVLwwaqZI92e7CzZG6Ya6qK4BgVcApkS6U7hW72IIU-pa3cFZP1ycriclAJ5OM3shyMUgIWVH7FeqcHSPvUa2DvSlzUcsNF-CbXSPpMVuzMR6Xj-HfV0fDGn9OJBwk7halK-c4gCuMiztNFIG1Q_jXSo2VZ1re8_oST42iBSR7wPqs4fNooVh9pU-7skWoHt2GqxYz545zks4UzvzGdXFFU8QJqfH6Om8gy5II6pb6OtkERYkdidYHl7Rp1vtK3MvXLiFsI7wnRyYbBTzDol5LUKeA06Lc_bqWH0mEw10VgJlUFb5RjUzCxCqy0uaFbPQZFDUt9GBDIDsh4oODdwpv1GFKr7RcuVRV4rcLbJLn4aRS_Z3DKiuGYw2wIjavqktc755pE6ycZ9S_RRp6nbvcJ3fTuqIH-iPWcc1CQiwHRHZAZd_IgiEfX0pB7-qKBF0eCqJ4GHeyLVQWzTI1x7F1EGLgUZzuUAvf96F8lWjd-0Mbe00fnHPkQiW4-VGRH79PGrAdlx4Pfe8
