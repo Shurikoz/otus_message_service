@@ -18,6 +18,6 @@ Route::get('user/search', [UserController::class, 'search']);
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('user', UserController::class)->only(['show']);
     Route::get('posts/feed', [PostController::class, 'index']);
-    Route::post('posts/create', [PostController::class, 'store']);
+    Route::post('post/create', [PostController::class, 'store']);
 });
 

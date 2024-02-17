@@ -3,6 +3,11 @@ Accept: application/json
 Authorization: {{authorization}}
 
 ###
-POST {{host}}{{apiUri}}/posts/create
+POST {{host}}{{apiUri}}/post/create
+Content-Type: application/json
 Accept: application/json
 Authorization: {{authorization}}
+
+{
+    "text": "Animi quibusdam ut voluptas eaque dolore officia."
+}

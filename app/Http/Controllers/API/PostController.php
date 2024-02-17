@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Post;
 use App\Models\User;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
 /**
@@ -20,11 +21,11 @@ class PostController extends AppBaseController
 
         $posts = [];
         foreach ($friends as $friend) {
-            $friendPosts = $this->getFriendsPosts($friends, $friend);
+            $friendPosts = $this->getFriendsPosts($friend);
             $posts = array_merge($posts, json_decode($friendPosts));
         }
 
-        $posts = collect($posts)->sortByDesc('created_at');
+        $posts = collect($posts)->sortByDesc('created_at')->slice(0, 1000);
 
         return $this->sendResponse(
             $posts,
@@ -32,20 +33,42 @@ class PostController extends AppBaseController
         );
     }
 
-    protected function getFriendsPosts($friends, $friendId)
+    public function store(Request $request)
     {
-        $chunk = ceil(1000 / count($friends));
-        $cacheKeyPosts = 'cached_posts.' . $friendId;
-//        Redis::del($cacheKeyPosts);
+        $user = auth('api')->user();
+        $input = $request->validate(
+            [
+                'text' => ['required', 'string']
+            ],
+        );
+        $post = $user->posts()
+            ->create(
+                ['text' => $input['text']]
+            );
+
+        if ($post) {
+            $this->setPostCache($user);
+        }
+
+        return $this->sendResponse(
+            $post,
+            'Successfully saved.'
+        );
+    }
+
+    protected function getFriendsPosts($friendId)
+    {
+        $cacheKey = 'cached_posts.' . $friendId;
+//        Redis::del($cacheKey);
         /** @var Redis $posts */
-        $posts = Redis::get($cacheKeyPosts);
+        $posts = Redis::get($cacheKey);
         if ($posts === null) {
             $posts = Post::query()->where('user_id', $friendId)
                 ->with(['user' => fn($query) => $query->select('id', 'first_name', 'last_name')])
-                ->limit($chunk)
+                ->limit(200)
                 ->get();
 
-            Redis::set($cacheKeyPosts, $posts);
+            Redis::set($cacheKey, $posts);
 
             return json_encode($posts);
         }
@@ -53,13 +76,15 @@ class PostController extends AppBaseController
         return $posts;
     }
 
-    public function store()
+    protected function setPostCache($user): void
     {
+        $cacheKey = 'cached_posts.' . $user->id;
+        $posts = Post::query()->where('user_id', $user->id)
+            ->with(['user' => fn($query) => $query->select('id', 'first_name', 'last_name')])
+            ->orderBy('created_at', 'desc')
+            ->limit(200)
+            ->get();
 
-
-        return $this->sendResponse(
-            [],
-            'Successfully saved.'
-        );
+        Redis::set($cacheKey, $posts);
     }
 }

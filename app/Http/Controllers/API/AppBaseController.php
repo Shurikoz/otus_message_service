@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller as Controller;
+use Countable;
+
 class AppBaseController extends Controller
 {
     public function sendResponse($result, $message)
     {
         $response = [
             'success' => true,
+            'total'   => $result instanceof Countable || is_array($result) ? count($result) : 1,
             'data'    => $result,
-            'total' => count($result),
             'message' => $message,
         ];
         return response()->json($response, 200);
