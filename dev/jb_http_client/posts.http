@@ -1,3 +1,8 @@
 GET {{host}}{{apiUri}}/posts/feed
 Accept: application/json
 Authorization: {{authorization}}
+
+###
+POST {{host}}{{apiUri}}/posts/create
+Accept: application/json
+Authorization: {{authorization}}

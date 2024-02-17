@@ -36,7 +36,7 @@ class PostController extends AppBaseController
     {
         $chunk = ceil(1000 / count($friends));
         $cacheKeyPosts = 'cached_posts.' . $friendId;
-        Redis::del($cacheKeyPosts);
+//        Redis::del($cacheKeyPosts);
         /** @var Redis $posts */
         $posts = Redis::get($cacheKeyPosts);
         if ($posts === null) {
@@ -51,5 +51,15 @@ class PostController extends AppBaseController
         }
 
         return $posts;
+    }
+
+    public function store()
+    {
+
+
+        return $this->sendResponse(
+            [],
+            'Successfully saved.'
+        );
     }
 }
