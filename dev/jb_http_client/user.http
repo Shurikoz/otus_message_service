@@ -4,12 +4,11 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "login": "User1",
-    "email": "email@email.ru",
+    "email": "email8@email.ru",
     "password": "password",
     "confirm_password": "password",
-    "first_name": "first_name",
-    "last_name": "last_name",
+    "first_name": "User8",
+    "last_name": "User8",
     "birthday": "1970-01-01",
     "sex": 1,
     "interests": "interests",
@@ -35,6 +34,6 @@ Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZWJjZThlYzJmNzZlMDRhZWZhZGE5NWEwNDlmMmUxNmNhODZiOGM2ZGFmNGY0NDRlZjlmZWI4NDg5MGVmYTFkNTgyNzk5MTRhZGUyMmE0MzMiLCJpYXQiOjE2OTYxODIyNTguNjQzNDg4LCJuYmYiOjE2OTYxODIyNTguNjQzNDk1LCJleHAiOjE3Mjc4MDQ2NTguNjMxMjY0LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.hHzYtOPzJXCcFvB3fH5KQDyu7lYXtjyW36loPFt5ToRvxpTf0O8H_pTYzDG4J7LQUVuv8dzwDFOu4HKqbdCppbos241LoaDjakk6gVSpuZ8cUMZszY3ru0UYbrNjFULPgcLfvs4Omh072WmpdhOIRt1snO-q2GbHC2A910ABMwkyZI2aZghqAkdyKIZlWd7bDmQpV3YIrHf2yvFJ9hHW0By7szPtJShoUzqkm4hWdyn2wPtisXeGCBgy3EqfJ_3iw1kZFbtwSejkF-rL9ynEAZOzVHhBC2-yJSldt6BuTKY7TpNBMqCC8khHQG9sNPTeo6tFWuvtrf2EkzXm-Hsbyfyz8Cj1b5Oq10fzWiZlNlpAkBVNgZkAwvWW_Sh0lJIPv9xRhc2dsRF0EKNFy33H8VqkBA2C5LJB98DoQU_yM0c4rwIQJznlvlM-Lopgd_R6BFGNeVLZ-ciJj3O-XIviWUV6w9Vnhl1fzfrXXF43jIIcX1WyWzwcQVelVrXwKHWWU9jQKOJ2-8cWYJdGBbPeKbBVLqMoJ6m6b2AhZ7MigxHhA0bx7mdPFd4m9vzRUa-7nd13RS05cK44JnGq2KImJJruQw6UfQCfkyEjF-cWe8nr3vItWOiDT5wnW1_M3gEj9dSR27mzCKO5AcpF1kOXHz-PN1q_YjNLnsUhFP3EDBY
 
 ### получить пользователя
-GET http://127.0.0.1:8000/api/user/search
+GET http://127.0.0.1:8000/api/user/search?name=анна&surname=
 Accept: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZWJjZThlYzJmNzZlMDRhZWZhZGE5NWEwNDlmMmUxNmNhODZiOGM2ZGFmNGY0NDRlZjlmZWI4NDg5MGVmYTFkNTgyNzk5MTRhZGUyMmE0MzMiLCJpYXQiOjE2OTYxODIyNTguNjQzNDg4LCJuYmYiOjE2OTYxODIyNTguNjQzNDk1LCJleHAiOjE3Mjc4MDQ2NTguNjMxMjY0LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.hHzYtOPzJXCcFvB3fH5KQDyu7lYXtjyW36loPFt5ToRvxpTf0O8H_pTYzDG4J7LQUVuv8dzwDFOu4HKqbdCppbos241LoaDjakk6gVSpuZ8cUMZszY3ru0UYbrNjFULPgcLfvs4Omh072WmpdhOIRt1snO-q2GbHC2A910ABMwkyZI2aZghqAkdyKIZlWd7bDmQpV3YIrHf2yvFJ9hHW0By7szPtJShoUzqkm4hWdyn2wPtisXeGCBgy3EqfJ_3iw1kZFbtwSejkF-rL9ynEAZOzVHhBC2-yJSldt6BuTKY7TpNBMqCC8khHQG9sNPTeo6tFWuvtrf2EkzXm-Hsbyfyz8Cj1b5Oq10fzWiZlNlpAkBVNgZkAwvWW_Sh0lJIPv9xRhc2dsRF0EKNFy33H8VqkBA2C5LJB98DoQU_yM0c4rwIQJznlvlM-Lopgd_R6BFGNeVLZ-ciJj3O-XIviWUV6w9Vnhl1fzfrXXF43jIIcX1WyWzwcQVelVrXwKHWWU9jQKOJ2-8cWYJdGBbPeKbBVLqMoJ6m6b2AhZ7MigxHhA0bx7mdPFd4m9vzRUa-7nd13RS05cK44JnGq2KImJJruQw6UfQCfkyEjF-cWe8nr3vItWOiDT5wnW1_M3gEj9dSR27mzCKO5AcpF1kOXHz-PN1q_YjNLnsUhFP3EDBY

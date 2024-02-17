@@ -4,26 +4,26 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 /**
  * @method sendResponse($array, string $string)
  */
 class UserController extends AppBaseController
 {
-    public function search()
+    public function search(Request $request)
     {
-//        $name = 'ана';
-        $name = 'Дми';
-        $surname = 'Аб';
-
         $profiles = Profile::where(
             [
-                ['first_name', 'LIKE', $name . '%'],
-                ['last_name', 'LIKE', $surname . '%']
+                ['first_name', 'LIKE', $request->get('name') . '%'],
+                ['last_name', 'LIKE', $request->get('surname') . '%']
             ]
-        )->orderBy('id')->get();
+        )
+            ->orderBy('id')
+            ->limit(10)
+            ->get();
 
-        return $this->sendResponse(count($profiles), 'successfully.');
+        return $this->sendResponse($profiles, 'successfully.');
     }
 
     public function show($id)

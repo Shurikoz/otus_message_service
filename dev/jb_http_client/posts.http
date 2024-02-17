@@ -1,0 +1,3 @@
+GET {{host}}{{apiUri}}/posts/feed
+Accept: application/json
+Authorization: {{authorization}}

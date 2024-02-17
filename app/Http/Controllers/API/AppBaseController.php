@@ -10,6 +10,7 @@ class AppBaseController extends Controller
         $response = [
             'success' => true,
             'data'    => $result,
+            'total' => count($result),
             'message' => $message,
         ];
         return response()->json($response, 200);
