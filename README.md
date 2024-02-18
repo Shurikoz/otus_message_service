@@ -16,6 +16,10 @@
 5. Сгенерировать токены безопасности - php artisan passport:install
 6. Запустить приложение - php artisan serve
 
+7. Запуск воркеров очередей
+   php artisan queue:work --queue=notification
+   php artisan queue:work --queue=posts_caching
+
 Запросы на _регистрацию_ | _авторизацию_ | _получение пользователя_ находятся здесь - [user.http](dev%2Fjb_http_client%2Fuser.http)
 Токен безопасности, сгенерированный ранее (Laravel Password Grant Client) используется в "client_secret" для авторизации
 Для получения пользователя необходимо передать Bearer токен, получаемый при авторизации

@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\AMQPHelper;
+use App\Helpers\CacheHelper;
+use App\Jobs\NotificationJob;
+use App\Jobs\UserPostsCachingJob;
 use App\Models\Post;
 use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @method sendResponse($array, string $string)
@@ -47,13 +53,24 @@ class PostController extends AppBaseController
             );
 
         if ($post) {
-            $this->setPostCache($user);
+            dispatch(new UserPostsCachingJob($user));
         }
 
         return $this->sendResponse(
             $post,
             'Successfully saved.'
         );
+    }
+
+    public function posted(Request $request)
+    {
+        $input = $request->validate(
+            [
+                'id' => ['required', 'integer']
+            ],
+        );
+
+        CacheHelper::setPostCache($input['id']);
     }
 
     protected function getFriendsPosts($friendId)
@@ -63,28 +80,9 @@ class PostController extends AppBaseController
         /** @var Redis $posts */
         $posts = Redis::get($cacheKey);
         if ($posts === null) {
-            $posts = Post::query()->where('user_id', $friendId)
-                ->with(['user' => fn($query) => $query->select('id', 'first_name', 'last_name')])
-                ->limit(200)
-                ->get();
-
-            Redis::set($cacheKey, $posts);
-
-            return json_encode($posts);
+            return CacheHelper::setPostCache($friendId);
         }
 
         return $posts;
-    }
-
-    protected function setPostCache($user): void
-    {
-        $cacheKey = 'cached_posts.' . $user->id;
-        $posts = Post::query()->where('user_id', $user->id)
-            ->with(['user' => fn($query) => $query->select('id', 'first_name', 'last_name')])
-            ->orderBy('created_at', 'desc')
-            ->limit(200)
-            ->get();
-
-        Redis::set($cacheKey, $posts);
     }
 }

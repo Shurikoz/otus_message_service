@@ -14,7 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * @method static create(array $input)
  * @method static findOrFail($id)
- * @property mixed $id
+ * @property integer $id
  * @property mixed $friends
  */
 class User extends Authenticatable
