@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\MessengerController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\UserController;
@@ -21,6 +22,10 @@ Route::middleware('auth:api')->group(function () {
     Route::post('post/create', [PostController::class, 'store']);
     Route::post('/post/feed/posted', [PostController::class, 'posted']);
 
+    Route::get('/messenger/channel', [MessengerController::class, 'channel']);
+    Route::get('/messenger/postgres', [MessengerController::class, 'postMessageInPostgres']);
+    Route::get('/messenger/tarantool', [MessengerController::class, 'postMessageInTarantool']);
 
+    Route::get('/messenger', [MessengerController::class, 'messenger']);
 });
 

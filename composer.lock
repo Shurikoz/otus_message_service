@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9256f4fc82bd8c455c8798c377b1414e",
+    "content-hash": "a2e05231a19a484e949cf5f2b52f649d",
     "packages": [
         {
             "name": "brick/math",
@@ -4230,6 +4230,68 @@
             "time": "2023-04-15T23:01:58+00:00"
         },
         {
+            "name": "rybakit/msgpack",
+            "version": "v0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rybakit/msgpack.php.git",
+                "reference": "fc6bc45e92274e78c32d0a86f2e2cc1f8b5e017b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rybakit/msgpack.php/zipball/fc6bc45e92274e78c32d0a86f2e2cc1f8b5e017b",
+                "reference": "fc6bc45e92274e78c32d0a86f2e2cc1f8b5e017b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.1|^8"
+            },
+            "require-dev": {
+                "ext-gmp": "*",
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "phpunit/phpunit": "^7.1|^8|^9",
+                "vimeo/psalm": "^3.9|^4"
+            },
+            "suggest": {
+                "ext-decimal": "For converting overflowed integers to Decimal objects",
+                "ext-gmp": "For converting overflowed integers to GMP objects"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MessagePack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Leonovich",
+                    "email": "gen.work@gmail.com"
+                }
+            ],
+            "description": "A pure PHP implementation of the MessagePack serialization format.",
+            "keywords": [
+                "messagepack",
+                "msgpack",
+                "pure",
+                "streaming"
+            ],
+            "support": {
+                "issues": "https://github.com/rybakit/msgpack.php/issues",
+                "source": "https://github.com/rybakit/msgpack.php/tree/v0.9.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/rybakit",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-16T00:48:07+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v6.3.4",
             "source": {
@@ -6568,6 +6630,79 @@
                 }
             ],
             "time": "2023-08-24T14:51:05+00:00"
+        },
+        {
+            "name": "tarantool/client",
+            "version": "v0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tarantool-php/client.git",
+                "reference": "ddc22b43d4c34ba53c7860cb57ea839b06777e1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tarantool-php/client/zipball/ddc22b43d4c34ba53c7860cb57ea839b06777e1e",
+                "reference": "ddc22b43d4c34ba53c7860cb57ea839b06777e1e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5|^8",
+                "rybakit/msgpack": "^0.9",
+                "symfony/uid": "^5.1|^6"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "ext-sockets": "*",
+                "friendsofphp/php-cs-fixer": "^2.19",
+                "monolog/monolog": "^1.24|^2.0",
+                "psr/log": "^1.1",
+                "tarantool/phpunit-extras": "^0.1.10",
+                "vimeo/psalm": "^3.9|^4"
+            },
+            "suggest": {
+                "ext-decimal": "For using decimals with Tarantool 2.3+",
+                "ext-uuid": "For better performance when using UUIDs with Tarantool 2.4+",
+                "psr/log": "For using LoggingMiddleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tarantool\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Leonovich",
+                    "email": "gen.work@gmail.com"
+                }
+            ],
+            "description": "PHP client for Tarantool.",
+            "keywords": [
+                "client",
+                "nosql",
+                "pure",
+                "tarantool"
+            ],
+            "support": {
+                "issues": "https://github.com/tarantool-php/client/issues",
+                "source": "https://github.com/tarantool-php/client/tree/v0.10.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/rybakit",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-07-05T17:52:27+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
