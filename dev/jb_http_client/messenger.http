@@ -1,20 +1,3 @@
-###
-GET {{host}}{{apiUri}}/messenger
-Content-Type: application/json
-Accept: application/json
-Authorization: {{authorization}}
-
-###
-GET {{host}}{{apiUri}}/messenger/channel
-Accept: application/json
-Authorization: {{authorization}}
-
-###
-GET {{host}}{{apiUri}}/messenger/postgres
-Accept: application/json
-Authorization: {{authorization}}
-
-###
-GET {{host}}{{apiUri}}/messenger/tarantool
+GET {{host}}{{apiUri}}/messenger/test
 Accept: application/json
 Authorization: {{authorization}}

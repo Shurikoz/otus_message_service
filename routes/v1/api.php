@@ -12,10 +12,5 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('v1')->as('v1:')->group(
-    base_path('routes/v1/api.php'),
-);
+Route::get('/messenger/get', [MessengerController::class, 'getMessageV1']);
 
-Route::prefix('v2')->as('v2:')->group(
-    base_path('routes/v2/api.php'),
-);
